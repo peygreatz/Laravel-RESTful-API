@@ -86,11 +86,16 @@ class Handler extends ExceptionHandler
             $errorCode = $exception->errorInfo[1];
 
             if ($errorCode == 1451) {
-                return $this->errorResponse('Cannot remove this resource permanently. It is related with any other resource', 409)
+                return $this->errorResponse('Cannot remove this resource permanently. It is related with any other resource', 409);
             }
         }
 
-        return parent::render($request, $exception);
+        if (config('app.debug')) {
+            return parent::render($request, $exception);
+        }
+
+        return $this->errorResponse('Unexpected Exception. Try later', 500);
+
     }
 
     /**
