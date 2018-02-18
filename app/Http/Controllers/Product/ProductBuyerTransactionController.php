@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Product;
 
 use App\User;
 use App\Product;
+use App\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\ApiController;
 
 class ProductBuyerTransactionController extends ApiController
@@ -31,11 +33,11 @@ class ProductBuyerTransactionController extends ApiController
             return $this->errorResponse('The buyer must be a verified user', 409);
         }
 
-        if (!$product->$seller->isVerified()) {
-            return $this->errorResponse('The buyer must be a verified user', 409);
+        if (!$product->seller->isVerified()) {
+            return $this->errorResponse('The seller must be a verified user', 409);
         }
 
-        if (!$product-->isAvailable()) {
+        if (!$product->isAvailable()) {
             return $this->errorResponse('The product is not available', 409);
         }
 
@@ -43,7 +45,7 @@ class ProductBuyerTransactionController extends ApiController
             return $this->errorResponse('The product does not have enough units for this transaction', 409);
         }
 
-        return DB::transaction(function() use ($request, $product, $buyer){
+        return DB::transaction(function() use ($request, $product, $buyer) {
             $product->quantity -= $request->quantity;
             $product->save();
 

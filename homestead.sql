@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 18, 2018 at 04:48 AM
+-- Generation Time: Feb 18, 2018 at 06:00 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -184,6 +184,20 @@ CREATE TABLE `transactions` (
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `transactions`
+--
+
+INSERT INTO `transactions` (`id`, `quantity`, `buyer_id`, `product_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 5, 5, 4, '2018-02-17 17:00:00', '2018-02-17 17:00:00', NULL),
+(2, 7, 3, 14, '2018-02-17 17:00:00', '2018-02-17 17:00:00', NULL),
+(3, 9, 1, 12, '2018-02-17 17:00:00', '2018-02-17 17:00:00', NULL),
+(4, 5, 2, 18, '2018-02-17 17:00:00', '2018-02-17 17:00:00', NULL),
+(5, 3, 4, 13, '2018-02-17 17:00:00', '2018-02-17 17:00:00', NULL),
+(6, 8, 1, 8, '2018-02-17 17:00:00', '2018-02-17 17:00:00', NULL),
+(7, 12, 3, 16, '2018-02-17 17:00:00', '2018-02-17 17:00:00', NULL),
+(8, 12, 3, 1, '2018-02-17 17:00:00', '2018-02-17 17:00:00', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -289,7 +303,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `users`
 --
