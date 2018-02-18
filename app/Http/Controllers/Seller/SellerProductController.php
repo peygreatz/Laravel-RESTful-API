@@ -86,6 +86,13 @@ class SellerProductController extends ApiController
             }
         }
 
+        // hapus gambar lama dan update gambar baru pas edit produk
+        if ($request->hasFile('image')) {
+            Storage::delete($product->image);
+
+            $product->image = $request->image->store('');
+        }
+
         // jika produk tidak di update atau hasilnya sama maka tampilkan error
         if ($product->isClean()) {
             return $this->errorResponse('You need to specify a different value to update', 422);
