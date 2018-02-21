@@ -2,6 +2,7 @@
 
 namespace App\Transformers;
 
+use App\Buyer;
 use League\Fractal\TransformerAbstract;
 
 class BuyerTransformer extends TransformerAbstract
