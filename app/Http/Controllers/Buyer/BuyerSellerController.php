@@ -20,6 +20,8 @@ class BuyerSellerController extends ApiController
      */
     public function index(Buyer $buyer)
     {
+        $this->allowAdminAction();
+        
         // relasi yang tidak terkoneksi atau melewati tabel relasi
         $sellers = $buyer->transactions()->with('product.sellers')
         ->get()

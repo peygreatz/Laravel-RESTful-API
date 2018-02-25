@@ -20,6 +20,8 @@ class CategoryTransactionController extends ApiController
      */
     public function index(Category $category)
     {
+        $this->allowAdminAction();
+        
         $transactions = $category->products()
             // harus ada minimal 1 transaksi maka ditampilkan
             ->whereHas('transactions')
